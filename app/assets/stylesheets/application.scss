@@ -1,0 +1,68 @@
+@import 'bootstrap/scss/bootstrap';
+@import "variables/colors.scss";
+@import "variables/font-sizes.scss";
+@import "home";
+
+/* COMMON */
+html{
+  font-size: $root-font-size;
+  body{
+    font-size: $font-size-16px;
+    font-family:'Neue Haas Grotesk Text Pro',"-apple-system,BlinkMacSystemFont","Segoe UI","ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro","メイリオ", "Meiryo", "ＭＳ Ｐゴシック", sans-serif;
+    color: $base-font-color;
+    font-feature-settings: "palt";
+    background-color: #f7f3e8;
+  }
+  ul{
+    padding: 0;
+  }
+  ul, li{
+    list-style: none;
+  }
+}
+/* HEADER */
+#header{
+  .navbar{
+    background-color: $bg-color-signup;
+    .nav-link{
+      color: $font-color-white;
+    }
+  }
+  .navbar-brand{
+    color: $font-color-white;
+    padding: 0;
+    &:hover{
+      color: $font-color-white;
+      opacity: .65;
+    }
+  }
+  #login-user-info{
+    padding: 0;
+    .img-gravatar{
+      width: 30px;
+      height: 30px;
+      margin-right: .15rem;
+      display: inline-block;
+      border: 1px solid $font-color-white;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+  .dropdown-menu{
+    .item-headline{
+      color: $font-color-white;
+      font-size: $font-size-10px;
+    }
+  }
+  /* 登録する */
+  .btn-signup{
+    background-color: $bg-color-white;
+    color: $font-color-orange;
+    border-radius: 30px;
+  }
+  /* ログイン */
+  .btn-login{
+    border-radius: 30px;
+    color: $font-color-white;
+  }
+}
