@@ -1,0 +1,21 @@
+<div class="col-12 col-sm-5">
+  <div class="input-group mb-3">
+    <%= f.file_field :mainvisual, class: "form-control", id: "mainvisual-File" %>
+    <%= f.label "upload", class: "input-group-text", for: "mainvisual-File" %>
+  </div>
+</div>
+<div class="col-12 col-sm-7">
+
+<div class="mb-3">
+  <%= f.label :title, class: "form-label" %>
+  <%= f.text_field :title, class: "form-control", placeholder: "レシピ名を入力してください" %>
+</div>
+<div class="mb-3">
+  <%= f.label :description, class: "form-label" %>
+  <%= f.text_area :description, class: "form-control", rows: "5", placeholder: "レシピの説明を入力してください" %>
+</div>
+<div class="mb-3 col-3">
+  <%= f.label :serves, class: "form-label" %>
+  <%= f.text_field :serves, class: "form-control", placeholder: "例）3~4人分" %>
+</div>
+</div>

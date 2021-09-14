@@ -1,0 +1,57 @@
+@import 'bootstrap/scss/bootstrap';
+@import "variables/colors.scss";
+@import "variables/font-sizes.scss";
+.recipe_post-container{
+  background-color: $bg-color-white;
+  border: 1px solid #e2dcca;
+  .recipe-mainVisual{
+    background-color: #f0f0f0;
+  }
+  .ingredients-container{
+    .title-container{
+      border-bottom: 1px solid #ddd;
+      .serves{
+        color: #555;
+        padding-left: .5rem;
+      }
+    }
+  }
+}
+/* *****************************************
+PC
+***************************************** */
+@include media-breakpoint-up(xl) {
+  // recipes/:id
+  #recipe_show-container{
+    padding-top: 40px;
+    .title{
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    .recipe_post-container{
+      border-radius: 4px;
+      padding: 2rem 3rem;
+    }
+    .recipe-mainVisual{
+      height: 300px;
+    }
+    .ingredients-container{
+      .title-container{
+        padding-bottom: .5rem;
+        margin-bottom: .5rem;
+      }
+  }
+  }
+  // recipes/new
+  #recipe_new-container{
+    padding-top: 40px;
+    .title{
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    .recipe_post-container{
+      border-radius: 4px;
+      padding: 2rem 3rem;
+    }
+  }
+}

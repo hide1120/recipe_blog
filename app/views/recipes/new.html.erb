@@ -1,0 +1,16 @@
+<% provide(:title, "レシピの新規作成") %>
+<div id="recipe_new-container">
+<div class="container">
+<div class="row">
+<h1 class="title text-center"><%= yield(:title) %></h1>
+<div class="col-12 col-md-10 m-auto recipe_post-container">
+<%= form_with(model: @recipe, class: "row", local: true) do |f| %>
+<%= render "recipes/form", f: f %>
+<div class="d-grid gap-2 col-6 mx-auto">
+<%= f.submit "投稿する", class: "btn btn-primary p-3 fw-bold fs-5" %>
+</div>
+<% end %>
+</div>
+</div>
+</div>
+</div>

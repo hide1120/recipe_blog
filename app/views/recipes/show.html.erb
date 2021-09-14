@@ -1,0 +1,30 @@
+<% provide(:title, @recipe.title) %>
+<div id="recipe_show-container">
+<div class="container">
+<div class="row">
+<div class="col-12 col-md-10 col-lg-8 m-auto recipe_post-container">
+<%= link_to "編集する", :edit_recipe, class: "link" %>
+<h1 class="title"><%= yield(:title) %></h1>
+<div class="row">
+<div class="col-5 col-lg-4">
+<figure class="recipe-mainVisual">
+<% if @recipe.mainvisual == nil %>
+なし
+<% end %>
+</figure>
+</div>
+<div class="col-7 col-lg-8">
+<p class="mb-3"><%= @recipe.description %></p>
+<div class="ingredients-container">
+<div class="title-container d-flex align-items-center">
+  <h2 class="fw-bold fs-4 m-0">材料</h2>
+  <span class="fs-6 serves">（<%= @recipe.serves %>）</span>
+</div>
+<p class="mb-3"></p>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
