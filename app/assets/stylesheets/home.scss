@@ -119,7 +119,7 @@ Not Login
       }
     }
     .upper-text{
-      font-size: $font-size-14px;
+      font-size: $fs-14px;
     }
   }
   /* サムネイル */
@@ -145,15 +145,15 @@ Not Login
     .mainVisual-headline{
       bottom: 150px;
       .top-headline{
-        font-size: $font-size-70px;
+        font-size: $fs-70px;
         margin-bottom: 2rem;
         span{
-          font-size: $font-size-30px;
+          font-size: $fs-30px;
           margin-top: 2rem;
         }
       }
       .btn-signup{
-        font-size: $font-size-20px;
+        font-size: $fs-20px;
         padding: .75rem 2rem;
         border-radius: 30px;
       }

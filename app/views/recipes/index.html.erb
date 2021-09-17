@@ -1,0 +1,28 @@
+<% provide(:title, "レシピ一覧") %>
+<div id="recipes_index-container">
+<div class="container-md m-auto">
+<div class="row">
+<article class="col-12 col-md-8">
+<div class="recipes_index">
+<div class="title-container">
+  <h1 class="headline"><%= yield(:title) %></h1>
+</div>
+<% @recipes.each do |recipe| %>
+  <section class="recipe-item">
+  <%= link_to recipe, class: "d-flex flex-row align-items-center recipe-link" do %>
+    <figure class="recipe-thumbnail">
+      <%= image_tag "pht-top-mainVisual01.jpg", loading: "lazy", width: 160, height: 160 %>
+    </figure>
+    <div class="recipe-detail">
+      <%= content_tag :h2, recipe.title, class: "title" %>
+    </div>
+  <% end %>
+  </section>
+<% end %>
+</div>
+</article>
+<aside class="col-12 col-md-4">
+<p>ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</p></aside>
+</div>
+</div>
+</div>

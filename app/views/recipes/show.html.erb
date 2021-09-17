@@ -7,13 +7,33 @@
 <h1 class="title"><%= yield(:title) %></h1>
 <div class="row">
 <div class="col-5 col-lg-4">
-<figure class="recipe-mainVisual">
+<figure class="recipe-mainVisual skeleton">
 <% if @recipe.mainvisual == nil %>
 なし
+<% else %>
+
 <% end %>
+<%= image_tag "pht-top-mainVisual01.jpg", style: "object-fit: cover;", width: 100, height: 100 %>
 </figure>
 </div>
 <div class="col-7 col-lg-8">
+
+<div class="d-flex justify-content-end  align-item-center">
+<% unless @recipe.created_at.strftime("%Y.%m.%d") == @recipe.updated_at.strftime("%Y.%m.%d") %>
+  <!-- 更新時 -->
+  <time datetime="<%= @recipe.updated_at %>" class="created-time pe-2">
+    update: <%= @recipe.updated_at.strftime("%Y.%m.%d") %></time>
+  <span class="created-time"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+</svg><%= @recipe.created_at.strftime("%Y.%m.%d") %></span>
+<% else %>
+  <!-- 初期値 -->
+  <time datetime="<%= @recipe.created_at %>" class="created-time"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+  </svg> <%= @recipe.created_at.strftime("%Y.%m.%d") %></time>
+<% end %>
+</div>
+
 <p class="mb-3"><%= @recipe.description %></p>
 <div class="ingredients-container">
 <div class="title-container d-flex align-items-center">

@@ -8,7 +8,7 @@
 html{
   font-size: $root-font-size;
   body{
-    font-size: $font-size-16px;
+    font-size: $fs-16px;
     font-family:'Neue Haas Grotesk Text Pro',"-apple-system,BlinkMacSystemFont","Segoe UI","ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro","メイリオ", "Meiryo", "ＭＳ Ｐゴシック", sans-serif;
     color: $base-font-color;
     font-feature-settings: "palt";
@@ -19,6 +19,38 @@ html{
   }
   ul, li{
     list-style: none;
+  }
+  /* DEBUG */
+  .debug_dump{
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  /* SKELTON */
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    &:before{
+      content: "";
+      display: block;
+      height: 100%;
+      width: 100%;
+      background:  linear-gradient(90deg, transparent, rgba(#fff, 0.5), transparent);
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: skeleton-loading 1.2s linear infinite;
+    }
+  }
+  @keyframes skeleton-loading {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
   }
 }
 /* HEADER */
@@ -52,7 +84,7 @@ html{
   .dropdown-menu{
     .item-headline{
       color: $font-color-white;
-      font-size: $font-size-10px;
+      font-size: $fs-10px;
     }
   }
   /* 登録する */

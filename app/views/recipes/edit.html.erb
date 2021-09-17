@@ -3,7 +3,7 @@
 <div class="container">
 <div class="row">
 <h1 class="title text-center"><%= yield(:title) %></h1>
-<div class="col-12 col-md-10 m-auto recipe_post-container">
+<div class="col-12 col-md-10 col-lg-8 m-auto recipe_post-container">
 <%= form_with(model: @recipe, class: "row", local: true) do |f| %>
 <%= render "recipes/form", f: f %>
 <div class="d-grid gap-2 col-6 mx-auto">
