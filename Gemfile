@@ -61,3 +61,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # エラー
 gem 'rails-i18n'
+
+# 画像アップローダー
+gem 'carrierwave'
+gem 'rmagick'
