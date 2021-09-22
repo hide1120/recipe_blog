@@ -42,7 +42,9 @@
   border: 1px solid #e2dcca;
   border-radius: 6px;
   .recipe-mainVisual{
-    background-color: #f0f0f0;
+    img{
+      object-fit: cover;
+    }
   }
   .ingredients-container{
     .title-container{

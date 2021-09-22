@@ -16,5 +16,7 @@ module RecipeBlog
     #　以下の記述を追記する(設定必須)
     # デフォルトのlocaleを日本語(:ja)にする
     config.i18n.default_locale = :ja
+
+    config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
   end
 end
