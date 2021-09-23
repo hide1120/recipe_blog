@@ -6,6 +6,8 @@ class Recipe < ApplicationRecord
   validates :title, :description,
             presence: true
 
+  # MAINVISUAL UPLOADER
+  mount_uploader :mainvisual, MainvisualUploader
     private
       # idを乱数に変換
       def random_set_id

@@ -11,10 +11,16 @@
   <section class="recipe-item">
   <%= link_to recipe, class: "d-flex flex-row align-items-center recipe-link" do %>
     <figure class="recipe-thumbnail">
+    <% if recipe.mainvisual? %>
+      <%= image_tag recipe.mainvisual.url(:thumb250_300), loading: "lazy", width: 160, height: 160 %>
+    <% else %>
       <%= image_tag "pht-top-mainVisual01.jpg", loading: "lazy", width: 160, height: 160 %>
+    <% end %>
     </figure>
+
     <div class="recipe-detail">
       <%= content_tag :h2, recipe.title, class: "title" %>
+      <%= content_tag :time, recipe.created_at.strftime("%Y.%m.%d") %>
     </div>
   <% end %>
   </section>

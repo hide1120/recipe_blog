@@ -7,13 +7,13 @@
 <h1 class="title"><%= yield(:title) %></h1>
 <div class="row">
 <div class="col-5 col-lg-4">
-<figure class="recipe-mainVisual skeleton">
-<% if @recipe.mainvisual == nil %>
-なし
+<figure class="recipe-mainVisual">
+<% if @recipe.mainvisual? %>
+<%= image_tag @recipe.mainvisual.url(:thumb300), class: "img-fluid", width: 300, height: 300, loading: "lazy" %>
 <% else %>
+<%= image_tag "pht-top-mainVisual01.jpg", style: "object-fit: cover;", width: 100, height: 100, loading: "lazy" %>
 
 <% end %>
-<%= image_tag "pht-top-mainVisual01.jpg", style: "object-fit: cover;", width: 100, height: 100 %>
 </figure>
 </div>
 <div class="col-7 col-lg-8">
