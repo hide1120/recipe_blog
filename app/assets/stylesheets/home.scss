@@ -14,6 +14,7 @@ Not Login
   overflow: hidden;
   #slider {
     padding: 0;
+    margin: 0;
     list-style: none;
     .slider-item {
       background-size: cover;
@@ -89,21 +90,22 @@ Not Login
 }
 .mainVisual-headline-container{
   position: relative;
+  z-index: 10;
   .mainVisual-headline{
-    position: absolute;
-    .top-headline{
-      color: $font-color-white;
-      -moz-text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-      -webkit-text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-      -ms-text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-      text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-      line-height: 1;
-      margin: 0;
-    }
-    .btn-signup{
-      background-color: $bg-color-signup;
-      color: $font-color-white;
-    }
+    padding: 0 !important;
+  }
+  .top-headline{
+    color: $font-color-white;
+    -moz-text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    -webkit-text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    -ms-text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    line-height: 1;
+    margin: 0;
+  }
+  .btn-signup{
+    background-color: $bg-color-signup;
+    color: $font-color-white;
   }
 }
 /* ****************************************
@@ -137,13 +139,54 @@ Not Login
     margin: 0;
   }
 }
+@include media-breakpoint-between(md, lg){
+  .mainVisaul_slider, .slider-item, .mainVisual-headline-container{
+    height: 450px;
+  }
+  .mainVisual-headline{
+      padding: 0;
+      .top-headline{
+        font-size: $fs-60px;
+        margin-bottom: 2rem;
+        span{
+          font-size: $fs-22px;
+          margin-top: 2rem;
+        }
+      }
+      .btn-signup{
+        font-size: $fs-18px;
+        padding: .75rem 2rem;
+        border-radius: 30px;
+      }
+    }
+}
+@include media-breakpoint-between(lg, xl){
+  .mainVisaul_slider, .slider-item, .mainVisual-headline-container{
+    height: 500px;
+  }
+  .mainVisual-headline{
+      padding: 0;
+      .top-headline{
+        font-size: $fs-65px;
+        margin-bottom: 2rem;
+        span{
+          font-size: $fs-25px;
+          margin-top: 2rem;
+        }
+      }
+      .btn-signup{
+        font-size: $fs-18px;
+        padding: .75rem 2rem;
+        border-radius: 30px;
+      }
+    }
+}
 @include media-breakpoint-up(xl) {
+  /* メインビジュアル */
   .mainVisaul_slider, .slider-item, .mainVisual-headline-container{
     height: 600px;
   }
-  .mainVisual-headline-container{
-    .mainVisual-headline{
-      bottom: 150px;
+  .mainVisual-headline{
       .top-headline{
         font-size: $fs-70px;
         margin-bottom: 2rem;
@@ -158,6 +201,10 @@ Not Login
         border-radius: 30px;
       }
     }
+/* ****************************************
+最新のレシピ
+**************************************** */
+  #home-recipes-container{
+    padding-top: 40px;
   }
-
 }

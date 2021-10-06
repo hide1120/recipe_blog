@@ -1,0 +1,13 @@
+<% if @recipe.errors.any? %>
+<div class="callout-danger">
+<div class="alert alert-danger" role="alert">
+  <h4 class="alert-heading"><%= pluralize(@recipe.errors.count, "つのエラー") %>があります。</h4>
+  <hr>
+  <ul class="alerts-ul">
+    <% @recipe.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+</div>
+<% end %>

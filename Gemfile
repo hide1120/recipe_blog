@@ -65,3 +65,6 @@ gem 'rails-i18n'
 # 画像アップローダー
 gem 'carrierwave'
 gem 'rmagick'
+
+# coccoon
+gem 'cocoon'

@@ -4,6 +4,8 @@ class RecipesController < ApplicationController
   end
   def new
     @recipe = Recipe.new
+    @recipe_ingredients = @recipe.recipe_ingredients.build
+    #@how_to_makes = @recipe.how_to_makes.build
   end
   def create
     @recipe = Recipe.new(recipe_params)
@@ -11,16 +13,19 @@ class RecipesController < ApplicationController
       flash[:success] = "レシピが投稿されました"
       redirect_to @recipe
     else
-      render "new"
+      flash.now[:danger] = "レシピの投稿に失敗しました"
+      render :new
     end
   end
 
   def show
     @recipe = Recipe.find(params[:id])
+   # @recipe_ingredients = @recipe.recipe_ingredients
   end
 
   def edit
     @recipe = Recipe.find(params[:id])
+    @recipe_ingredients = @recipe.recipe_ingredients.build
   end
   def update
     @recipe = Recipe.find(params[:id])
@@ -28,6 +33,7 @@ class RecipesController < ApplicationController
       flash[:warning] = "レシピが上書きされました"
       redirect_to @recipe
     else
+      flash.now[:danger] = "レシピの更新に失敗しました"
       render "edit"
     end
   end
@@ -39,7 +45,9 @@ class RecipesController < ApplicationController
           :title,
           :description,
           :mainvisual,
-          :serves
+          :serves,
+          recipe_ingredients_attributes: [:id, :_destroy, :ing_name, :quantity]
+          #how_to_makes_attributes:[:id, :explanation, :process_image, :order_no, :_destroy]
         )
       end
 end

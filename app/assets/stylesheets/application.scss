@@ -44,6 +44,13 @@ html{
       animation: skeleton-loading 1.2s linear infinite;
     }
   }
+  /* ALERTS */
+  .alerts-ul{
+    padding-left: 1.5rem;
+    li{
+      list-style-type: disc;
+    }
+  }
   @keyframes skeleton-loading {
     0% {
       transform: translateX(-100%);
@@ -99,8 +106,14 @@ html{
     color: $font-color-white;
   }
 }
-@include media-breakpoint-between(md, xl) {
+@include media-breakpoint-between(md, lg) {
   body{
+    padding-top: 56px;
+  }
+}
+@include media-breakpoint-between(lg, xl) {
+  body{
+    padding-top: 56px;
   }
 }
 /* *****************************************

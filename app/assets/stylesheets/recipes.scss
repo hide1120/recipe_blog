@@ -2,7 +2,6 @@
 @import "variables/colors.scss";
 @import "variables/font-sizes.scss";
 // recipes
-#recipes_index-container{
   .recipes_index{
     background-color: $bg-color-white;
     border: 1px solid #e2dcca;
@@ -35,7 +34,6 @@
       }
     }
   }
-}
 // recipes/:id
 .recipe_post-container{
   background-color: $bg-color-white;
@@ -68,6 +66,7 @@ PC
   // recipes/
   #recipes_index-container{
     padding-top: 40px;
+  }
     .recipes_index{
       padding: 1.75rem 2rem;
     }
@@ -89,7 +88,6 @@ PC
         }
       }
     }
-  }
   // recipes/:id
   #recipe_show-container{
     padding-top: 40px;

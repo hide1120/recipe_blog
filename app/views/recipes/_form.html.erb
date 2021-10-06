@@ -1,8 +1,16 @@
 <div class="col-5 col-lg-4">
+<% if @recipe.mainvisual.present? %>
+<%= image_tag @recipe.mainvisual.url(:thumb300), class: "img-fluid", width: 300, height: 300, loading: "lazy" %>
   <div class="input-group mb-3">
     <%= f.file_field :mainvisual, class: "form-control", id: "mainvisual-File" %>
     <%= f.label "upload", class: "input-group-text", for: "mainvisual-File" %>
   </div>
+<% else %>
+  <div class="input-group mb-3">
+    <%= f.file_field :mainvisual, class: "form-control", id: "mainvisual-File" %>
+    <%= f.label "upload", class: "input-group-text", for: "mainvisual-File" %>
+  </div>
+<% end %>
 </div>
 <div class="col-7 col-lg-8">
 

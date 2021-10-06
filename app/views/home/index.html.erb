@@ -9,8 +9,8 @@
   <li class="slider-item" role="img" aria-label="トップメインビジュアル04"></li>
   <li class="slider-item" role="img" aria-label="トップメインビジュアル05"></li>
 </ul>
-<div class="container mainVisual-headline-container">
-  <div class="row">
+<div class="container">
+  <div class="row mainVisual-headline-container align-items-center">
     <div class="col-12 mainVisual-headline">
         <h1 class="top-headline">For All People Who <br>Enjoy Cooking<span class="d-block">料理を楽しむすべての人々のために</span></h1>
         <%= link_to "会員登録する", :root, class: "btn btn-signup font-weight-bold" %>
@@ -20,4 +20,34 @@
 </div>
 </div>
 </div>
+<div id="home-recipes-container" class="container-md m-auto">
+<div class="row">
+<article class="col-12 col-md-8">
+<div class="recipes_index">
+<% @recipes.each do |recipe| %>
+<section class="recipe-item">
+  <%= link_to recipe, class: "d-flex flex-row align-items-center recipe-link" do %>
+    <figure class="recipe-thumbnail">
+    <% if recipe.mainvisual? %>
+      <%= image_tag recipe.mainvisual.url(:thumb250_300), loading: "lazy", width: 160, height: 160 %>
+    <% else %>
+      <%= image_tag "pht-top-mainVisual01.jpg", loading: "lazy", width: 160, height: 160 %>
+    <% end %>
+    </figure>
+
+    <div class="recipe-detail">
+      <%= content_tag :h2, recipe.title, class: "title" %>
+      <%= content_tag :time, recipe.created_at.strftime("%Y.%m.%d") %>
+    </div>
+  <% end %>
+  </section>
+<% end %>
+</div>
+</article>
+<%= render "shared/sideBar-menu" %>
+</div>
+</div>
+
+
+
 </div>

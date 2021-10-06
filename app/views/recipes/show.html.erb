@@ -37,7 +37,11 @@
   <h2 class="fw-bold fs-4 m-0">材料</h2>
   <span class="fs-6 serves">（<%= @recipe.serves %>）</span>
 </div>
-<p class="mb-3"></p>
+<% @recipe.recipe_ingredients do |ingredient| %>
+<p class="mb-3"><%= ingredient.id %></p>
+<p class="mb-3"><%= ingredient.ing_name %></p>
+<p class="mb-3"><%= ingredient.quantity %></p>
+<% end %>
 </div>
 
 </div>

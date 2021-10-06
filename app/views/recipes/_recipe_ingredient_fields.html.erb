@@ -1,0 +1,14 @@
+<div class="nested-fields">
+<%= f.hidden_field :id %>
+  <div class="row mb-3">
+    <div class="col-7">
+      <%= f.text_field :ing_name, class: "form-control", placeholder: "材料" %>
+    </div>
+    <div class="col-3">
+      <%= f.text_field :quantity, class: "form-control", placeholder: "分量" %>
+    </div>
+    <div class="col-2">
+      <%= link_to_remove_association "削除", f, class: "btn btn-secondary btn-block" %>
+    </div>
+  </div>
+</div>
