@@ -1,7 +1,7 @@
 <div class="col-5 col-lg-4">
 <% if @recipe.mainvisual.present? %>
-<%= image_tag @recipe.mainvisual.url(:thumb300), class: "img-fluid", width: 300, height: 300, loading: "lazy" %>
   <div class="input-group mb-3">
+  <%= image_tag @recipe.mainvisual.url(:thumb300), class: "img-fluid", width: 300, height: 300, loading: "lazy" %>
     <%= f.file_field :mainvisual, class: "form-control", id: "mainvisual-File" %>
     <%= f.label "upload", class: "input-group-text", for: "mainvisual-File" %>
   </div>
@@ -12,6 +12,33 @@
   </div>
 <% end %>
 </div>
+<script>
+$(function() {
+  $('input[type=file]').before('<span></span>');
+
+  // アップロードするファイルを選択
+  $('input[type=file]').change(function() {
+    var file = $(this).prop('files')[0];
+
+    // 画像以外は処理を停止
+    if (! file.type.match('image.*')) {
+      // クリア
+      $(this).val('');
+      $('span').html('');
+      return;
+    }
+
+    // 画像表示
+    var reader = new FileReader();
+    reader.onload = function() {
+      var img_src = $('<img>').attr('src', reader.result);
+      $('span').html(img_src);
+    }
+    reader.readAsDataURL(file);
+  });
+});
+</script>
+
 <div class="col-7 col-lg-8">
 
 <div class="mb-3">

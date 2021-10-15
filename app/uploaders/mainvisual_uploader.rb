@@ -49,9 +49,9 @@ class MainvisualUploader < CarrierWave::Uploader::Base
 
   process :convert => 'jpg'
 
-  version :thumb400 do
-    process :resize_to_limit => [400, 400]
-  end
+  # version :thumb400 do
+  #   process :resize_to_limit => [400, 400]
+  # end
 
   version :thumb250_300 do
     process :resize_to_limit => [250, 300]
@@ -61,9 +61,9 @@ class MainvisualUploader < CarrierWave::Uploader::Base
     process :resize_to_limit => [300, 300]
   end
 
-  version :thumb200 do
-    process :resize_to_limit => [200, 200]
-  end
+  # version :thumb200 do
+  #   process :resize_to_limit => [200, 200]
+  # end
 
   version :thumb100 do
     process :resize_to_limit => [100, 100]

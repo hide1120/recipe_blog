@@ -15,7 +15,7 @@ class Recipe < ApplicationRecord
   #          dependent: :destroy,
   #          foreign_key: :recipe_id
   accepts_nested_attributes_for :recipe_ingredients,
-                                :reject_if => :all_blank,
+                                #:reject_if => :all_blank,
                                 #:how_to_makes,
 
                                 allow_destroy: true
