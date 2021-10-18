@@ -1,7 +1,7 @@
 <div class="col-5 col-lg-4">
 <% if @recipe.mainvisual.present? %>
   <div class="input-group mb-3">
-  <%= image_tag @recipe.mainvisual.url(:thumb300), class: "img-fluid", width: 300, height: 300, loading: "lazy" %>
+  <%= image_tag @recipe.mainvisual.url(:thumb300), id: "img_prev",class: "img-fluid", width: 300, height: 300, loading: "lazy" %>
     <%= f.file_field :mainvisual, class: "form-control", id: "mainvisual-File" %>
     <%= f.label "upload", class: "input-group-text", for: "mainvisual-File" %>
   </div>
@@ -9,34 +9,97 @@
   <div class="input-group mb-3">
     <%= f.file_field :mainvisual, class: "form-control", id: "mainvisual-File" %>
     <%= f.label "upload", class: "input-group-text", for: "mainvisual-File" %>
+  <div class="drag-area text-center">
+    <div class="drag-area-inner">
+    <div class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cloud-upload" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383z"/>
+        <path fill-rule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3z"/>
+      </svg>
+    </div>
+    <p class="drag-text">ここにファイルをドラッグ&ドロップする</p>
+    <button class="btn btn-primary">Browse File</button>
+    <%= f.file_field "ファイルを選択", class: "form-control", id: "mainvisual-File" %>
+    </div>
   </div>
+  </div>
+  <script>
+  //selecting all required elements
+const dropArea = document.querySelector(".drag-area"),
+dragText = dropArea.querySelector(".drag-text"),
+button = dropArea.querySelector("button"),
+input = dropArea.querySelector("input");
+let file; //this is a global variable and we'll use it inside multiple functions
+
+button.onclick = ()=>{
+  input.click(); //if user click on the button then the input also clicked
+}
+
+input.addEventListener("change", function(){
+  //getting user select file and [0] this means if user select multiple files then we'll select only the first one
+  file = this.files[0];
+  dropArea.classList.add("active");
+  showFile(); //calling function
+});
+
+
+//If user Drag File Over DropArea
+dropArea.addEventListener("dragover", (event)=>{
+  event.preventDefault(); //preventing from default behaviour
+  dropArea.classList.add("active");
+  dragText.textContent = "Release to Upload File";
+});
+
+//If user leave dragged File from DropArea
+dropArea.addEventListener("dragleave", ()=>{
+  dropArea.classList.remove("active");
+  dragText.textContent = "アップロードするファイルをドラッグ&ドロップする";
+});
+
+//If user drop File on DropArea
+dropArea.addEventListener("drop", (event)=>{
+  event.preventDefault(); //preventing from default behaviour
+  //getting user select file and [0] this means if user select multiple files then we'll select only the first one
+  file = event.dataTransfer.files[0];
+  showFile(); //calling function
+});
+
+function showFile(){
+  let fileType = file.type; //getting selected file type
+  let validExtensions = ["image/jpeg", "image/jpg", "image/png", "image/gif"]; //adding some valid image extensions in array
+  if(validExtensions.includes(fileType)){ //if user selected file is an image file
+    let fileReader = new FileReader(); //creating new FileReader object
+    fileReader.onload = ()=>{
+      let fileURL = fileReader.result; //passing user file source in fileURL variable
+      let imgTag = `<img src="${fileURL}" alt="" class="img-fluid">`; //creating an img tag and passing user selected file source inside src attribute
+      dropArea.innerHTML = imgTag; //adding that created img tag inside dropArea container
+    }
+    fileReader.readAsDataURL(file);
+  }else{
+    alert("This is not an Image File!");
+    dropArea.classList.remove("active");
+    dragText.textContent = "アップロードするファイルをドラッグ&ドロップする";
+  }
+}
+
+  </script>
 <% end %>
 </div>
 <script>
 $(function() {
-  $('input[type=file]').before('<span></span>');
-
-  // アップロードするファイルを選択
-  $('input[type=file]').change(function() {
-    var file = $(this).prop('files')[0];
-
-    // 画像以外は処理を停止
-    if (! file.type.match('image.*')) {
-      // クリア
-      $(this).val('');
-      $('span').html('');
-      return;
-    }
-
-    // 画像表示
-    var reader = new FileReader();
-    reader.onload = function() {
-      var img_src = $('<img>').attr('src', reader.result);
-      $('span').html(img_src);
-    }
-    reader.readAsDataURL(file);
-  });
-});
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            $('#img_prev').attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+      $("#mainvisual-File").change(function() {
+        readURL(this);
+      });
+    });
 </script>
 
 <div class="col-7 col-lg-8">

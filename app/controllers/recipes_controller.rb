@@ -46,7 +46,7 @@ class RecipesController < ApplicationController
           :description,
           :mainvisual,
           :serves,
-          recipe_ingredients_attributes: [:id, :ing_name, :quantity]
+          recipe_ingredients_attributes: [:id, :ing_name, :quantity, :_destroy]
           #how_to_makes_attributes:[:id, :explanation, :process_image, :order_no, :_destroy]
         )
       end
